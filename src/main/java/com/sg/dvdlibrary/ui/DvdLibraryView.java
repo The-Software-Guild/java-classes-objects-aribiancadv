@@ -176,6 +176,16 @@ public class DvdLibraryView {
     }
 
 
+    public void displaySearchBanner() {
+        io.print("=== SEARCH RESULTS ===");
+    }
+
+    public void displaySearchResults(List<Dvd> foundDvdList) {
+
+        for(Dvd dvd: foundDvdList){
+            io.print(dvd.getTitle());
+        }
 
 
+    }
 }

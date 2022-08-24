@@ -64,6 +64,9 @@ public class DvdLibraryController {
         }
     }
 
+
+
+
     private int getMenuSelection() {
         return view.printMenuAndGetSelection();
     }
@@ -143,39 +146,51 @@ public class DvdLibraryController {
 
     }
 
-    private void editNote(Dvd editedDvd) {
+    private void editNote(Dvd editedDvd) throws DvdLibraryDaoException {
         editedDvd.setNote(view.getNoteChoice());
         view.displayEditNoteResult(editedDvd);
     }
 
-    private void editStudio(Dvd editedDvd) {
+    private void editStudio(Dvd editedDvd) throws DvdLibraryDaoException {
         editedDvd.setStudioName(view.getStudioChoice());
         view.displayEditStudioResult(editedDvd);
 
     }
 
-    private void editDirectorsName(Dvd editedDvd) {
+    private void editDirectorsName(Dvd editedDvd) throws DvdLibraryDaoException {
         editedDvd.setDirectorName(view.getDirectorChoice());
         view.displayEditDirectorResult(editedDvd);
     }
 
-    private void editMPAARating(Dvd editedDvd) {
+    private void editMPAARating(Dvd editedDvd) throws DvdLibraryDaoException {
         editedDvd.setMPAARating(view.getMPAAChoice());
         view.displayEditMPAAResult(editedDvd);
     }
 
-    private void editTitle(Dvd editedDvd) {
+    private void editTitle(Dvd editedDvd) throws DvdLibraryDaoException {
 
         editedDvd.setTitle(view.getDvdTitleChoice());
         view.displayEditTitleResult(editedDvd);
 
     }
 
-    private void editReleaseDate(Dvd editedDvd) {
+    private void editReleaseDate(Dvd editedDvd) throws DvdLibraryDaoException {
 
         editedDvd.setReleaseDate(view.getDvdReleaseDateChoice());
         view.displayEditDateResult(editedDvd);
 
+    }
+
+    private void searchDvd() throws DvdLibraryDaoException {
+        view.displaySearchBanner();
+        String searchTerm = view.getDvdTitleChoice();
+        List<Dvd> dvdList = dao.getAllDvds();
+        view.displaySearchResults(dao.searchDvds(searchTerm, dvdList));
+
+
+    }
+
+    private void loadLibraryFromFile() {
     }
 
 

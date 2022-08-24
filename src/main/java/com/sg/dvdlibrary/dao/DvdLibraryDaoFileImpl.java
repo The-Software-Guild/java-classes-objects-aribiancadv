@@ -43,6 +43,20 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
         return removedDvd;
     }
 
+    @Override
+    public List<Dvd> searchDvds(String searchTerm, List<Dvd> dvdList) throws DvdLibraryDaoException {
+        List<Dvd> foundDvdList = new ArrayList<>();
+        for(Dvd dvd : dvdList){
+            if(dvd.getTitle().contains(searchTerm)){
+                foundDvdList.add(dvd);
+            }
+
+
+        }
+        return foundDvdList;
+    }
+
+
     private Dvd unmarshallDvd(String dvdAsText){
         // dvdAsText is expecting a line read in from our file.
         // For example, it might look like this:
@@ -109,7 +123,7 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
 
             // We are going to use the dvd id as the map key for our dvd object.
             // Put currentDvd into the map using dvd id as the key
-            dvds.put(currentDvd.getMPAARating(), currentDvd);
+            dvds.put(currentDvd.getTitle(), currentDvd);
         }
         // close scanner
         scanner.close();
