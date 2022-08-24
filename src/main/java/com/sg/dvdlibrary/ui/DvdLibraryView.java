@@ -27,10 +27,10 @@ public class DvdLibraryView {
     }
 
     public Dvd getNewDvdInfo() {
-        String title = io.readString("Please enter DVD Title");
-        String releaseDate = io.readString("Please enter Release Date");
-        String MPAARating = io.readString("Please enter MPAA Rating");
-        String directorName = io.readString("Please enter the director's name.");
+        String title = getDvdTitleChoice();
+        String releaseDate = getDvdReleaseDateChoice();
+        String MPAARating = getMPAAChoice();
+        String directorName = getDirectorChoice();
         String studioName = io.readString("Please enter the name of the studio.");
         String note = io.readString("Please add a rating or note.");
         Dvd currentDvd = new Dvd(title);
@@ -77,6 +77,10 @@ public class DvdLibraryView {
     }
     public String getDvdReleaseDateChoice() { return io.readString("Please enter the DVD Release Date."); }
     public String getMPAAChoice() { return io.readString("Please enter the MPAA Rating."); }
+    public String getDirectorChoice() { return io.readString("Please enter the director's name."); }
+
+    public String getStudioChoice() { return io.readString("Please enter the studio's name."); }
+    public String getNoteChoice() { return io.readString("Please enter a note."); }
 
     public void displayDvd(Dvd dvd) {
         if (dvd != null) {
@@ -151,4 +155,27 @@ public class DvdLibraryView {
         io.readString("Please hit enter to continue.");
 
     }
+
+
+    public void displayEditDirectorResult(Dvd editedDvd) {
+        io.print("The new director's name is: " + editedDvd.getDirectorName());
+        io.readString("Please hit enter to continue.");
+
+    }
+
+    public void displayEditStudioResult(Dvd editedDvd) {
+        io.print("The new studio name is: " + editedDvd.getStudioName());
+        io.readString("Please hit enter to continue.");
+
+    }
+
+
+    public void displayEditNoteResult(Dvd editedDvd) {
+        io.print("The new note reads: " + editedDvd.getNote());
+        io.readString("Please hit enter to continue.");
+    }
+
+
+
+
 }

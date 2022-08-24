@@ -99,10 +99,12 @@ public class DvdLibraryController {
         view.displayEditDvdBanner();
         String title = view.getDvdTitleChoice();
         Dvd editedDvd = dao.getDvd(title);
+
         view.printEditMenuAndGetSelection();
+        boolean keepGoing = true;
+        int menuSelection = 0;
         try {
-            boolean keepGoing = true;
-            int menuSelection = 0;
+
             while (keepGoing) {
 
                 menuSelection = getMenuSelection();
@@ -115,16 +117,16 @@ public class DvdLibraryController {
                         editReleaseDate(editedDvd);
                         break;
                     case 3:
-                        editMPAARating();
+                        editMPAARating(editedDvd);
                         break;
                     case 4:
-                        editDirectorsName();
+                        editDirectorsName(editedDvd);
                         break;
                     case 5:
-                        editStudio();
+                        editStudio(editedDvd);
                         break;
                     case 6:
-                        editNote();
+                        editNote(editedDvd);
                         break;
                     case 8:
                         run();
@@ -139,6 +141,22 @@ public class DvdLibraryController {
             view.displayErrorMessage(e.getMessage());
         }
 
+    }
+
+    private void editNote(Dvd editedDvd) {
+        editedDvd.setNote(view.getNoteChoice());
+        view.displayEditNoteResult(editedDvd);
+    }
+
+    private void editStudio(Dvd editedDvd) {
+        editedDvd.setStudioName(view.getStudioChoice());
+        view.displayEditStudioResult(editedDvd);
+
+    }
+
+    private void editDirectorsName(Dvd editedDvd) {
+        editedDvd.setDirectorName(view.getDirectorChoice());
+        view.displayEditDirectorResult(editedDvd);
     }
 
     private void editMPAARating(Dvd editedDvd) {
