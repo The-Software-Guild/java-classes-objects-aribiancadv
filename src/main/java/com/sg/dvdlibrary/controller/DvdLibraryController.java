@@ -40,8 +40,19 @@ public class DvdLibraryController {
                         removeDvd();
                         break;
                     case 5:
+                        editDvd();
+                        break;
+                    case 6:
+                        searchDvd();
+                        break;
+                    case 7:   
+                        loadLibraryFromFile();
+                        break;
+                    case 8:
                         keepGoing = false;
                         break;
+                    
+                        
                     default:
                         unknownCommand();
                 }
@@ -60,7 +71,7 @@ public class DvdLibraryController {
     private void createDvd() throws DvdLibraryDaoException {
         view.displayCreateDvdBanner();
         Dvd newDvd = view.getNewDvdInfo();
-        dao.addDvd(newDvd.getMPAARating(), newDvd);
+        dao.addDvd(newDvd.getTitle(), newDvd);
         view.displayCreateSuccessBanner();
     }
 
@@ -72,17 +83,83 @@ public class DvdLibraryController {
 
     private void viewDvd() throws DvdLibraryDaoException {
         view.displayDisplayDvdBanner();
-        String title = view.getDvdIdChoice();
+        String title = view.getDvdTitleChoice();
         Dvd dvd = dao.getDvd(title);
         view.displayDvd(dvd);
     }
 
     private void removeDvd() throws DvdLibraryDaoException {
         view.displayRemoveDvdBanner();
-        String title = view.getDvdIdChoice();
+        String title = view.getDvdTitleChoice();
         Dvd removedDvd = dao.removeDvd(title);
         view.displayRemoveResult(removedDvd);
     }
+
+    private void editDvd() throws DvdLibraryDaoException {
+        view.displayEditDvdBanner();
+        String title = view.getDvdTitleChoice();
+        Dvd editedDvd = dao.getDvd(title);
+        view.printEditMenuAndGetSelection();
+        try {
+            boolean keepGoing = true;
+            int menuSelection = 0;
+            while (keepGoing) {
+
+                menuSelection = getMenuSelection();
+
+                switch (menuSelection) {
+                    case 1:
+                        editTitle(editedDvd);
+                        break;
+                    case 2:
+                        editReleaseDate(editedDvd);
+                        break;
+                    case 3:
+                        editMPAARating();
+                        break;
+                    case 4:
+                        editDirectorsName();
+                        break;
+                    case 5:
+                        editStudio();
+                        break;
+                    case 6:
+                        editNote();
+                        break;
+                    case 8:
+                        run();
+                        break;
+                    default:
+                        unknownCommand();
+                }
+
+            }
+
+        } catch (DvdLibraryDaoException e) {
+            view.displayErrorMessage(e.getMessage());
+        }
+
+    }
+
+    private void editMPAARating(Dvd editedDvd) {
+        editedDvd.setMPAARating(view.getMPAAChoice());
+        view.displayEditMPAAResult(editedDvd);
+    }
+
+    private void editTitle(Dvd editedDvd) {
+
+        editedDvd.setTitle(view.getDvdTitleChoice());
+        view.displayEditTitleResult(editedDvd);
+
+    }
+
+    private void editReleaseDate(Dvd editedDvd) {
+
+        editedDvd.setReleaseDate(view.getDvdReleaseDateChoice());
+        view.displayEditDateResult(editedDvd);
+
+    }
+
 
     private void unknownCommand() {
         view.displayUnknownCommandBanner();

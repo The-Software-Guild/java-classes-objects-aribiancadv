@@ -63,16 +63,20 @@ public class DvdLibraryView {
     }
 
     public void displayDisplayAllBanner() {
-        io.print("=== Display All Dvds ===");
+        io.print("=== Display All DVDs ===");
     }
 
-    public void displayDisplayDvdBanner () {
-        io.print("=== Display Dvd ===");
+    public void displayDisplayDvdBanner() {
+        io.print("=== Display DVD ===");
     }
 
-    public String getDvdIdChoice() {
-        return io.readString("Please enter the Dvd ID.");
+    public void displayEditDvdBanner() { io.print("=== Search for DVD ==="); }
+
+    public String getDvdTitleChoice() {
+        return io.readString("Please enter the DVD Title.");
     }
+    public String getDvdReleaseDateChoice() { return io.readString("Please enter the DVD Release Date."); }
+    public String getMPAAChoice() { return io.readString("Please enter the MPAA Rating."); }
 
     public void displayDvd(Dvd dvd) {
         if (dvd != null) {
@@ -111,5 +115,40 @@ public class DvdLibraryView {
         io.print("=== ERROR ===");
         io.print(errorMsg);
     }
-    
+
+    public int printEditMenuAndGetSelection() {
+        io.print("Which information would you like to edit for this DVD?");
+        io.print("1. Title");
+        io.print("2. Release Date");
+        io.print("3. MPAA Rating");
+        io.print("4. Director's Name");
+        io.print("5. Studio");
+        io.print("6. Note");
+        io.print("7. Go Back");
+
+        return io.readInt("Please select from the above choices.", 1, 7);
+    }
+
+
+
+    public void displayEditTitleResult(Dvd editedDvd) {
+
+        io.print("The new title is: " + editedDvd.getTitle());
+        io.readString("Please hit enter to continue.");
+    }
+
+
+
+    public void displayEditDateResult(Dvd editedDvd) {
+
+        io.print("The new Release Date is: " + editedDvd.getReleaseDate());
+        io.readString("Please hit enter to continue.");
+    }
+
+
+    public void displayEditMPAAResult(Dvd editedDvd) {
+        io.print("The new MPAA Rating is: " + editedDvd.getMPAARating());
+        io.readString("Please hit enter to continue.");
+
+    }
 }
