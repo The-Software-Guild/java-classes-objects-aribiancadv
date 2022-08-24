@@ -190,7 +190,10 @@ public class DvdLibraryController {
 
     }
 
-    private void loadLibraryFromFile() {
+    private void loadLibraryFromFile() throws DvdLibraryDaoException {
+        view.displayLoadLibraryBanner();
+        view.getLibraryFileChoice();
+
     }
 
 

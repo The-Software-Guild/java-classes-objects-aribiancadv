@@ -31,8 +31,8 @@ public class DvdLibraryView {
         String releaseDate = getDvdReleaseDateChoice();
         String MPAARating = getMPAAChoice();
         String directorName = getDirectorChoice();
-        String studioName = io.readString("Please enter the name of the studio.");
-        String note = io.readString("Please add a rating or note.");
+        String studioName = getStudioChoice();
+        String note = getNoteChoice();
         Dvd currentDvd = new Dvd(title);
         currentDvd.setTitle(releaseDate);
         currentDvd.setReleaseDate(MPAARating);
@@ -81,6 +81,9 @@ public class DvdLibraryView {
 
     public String getStudioChoice() { return io.readString("Please enter the studio's name."); }
     public String getNoteChoice() { return io.readString("Please enter a note."); }
+
+    public String getLibraryFileChoice() { return io.readString("Please type the full filename (with extension) " +
+            "of the library file you'd like to load. ");}
 
     public void displayDvd(Dvd dvd) {
         if (dvd != null) {
@@ -188,4 +191,10 @@ public class DvdLibraryView {
 
 
     }
+
+    public void displayLoadLibraryBanner() {
+        io.print("== LOAD LIBRARY FILE ==");
+    }
+
+
 }

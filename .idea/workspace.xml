@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3d679dd-b7cf-4d4e-8361-76c07efd37c6" name="Changes" comment="Implemented editing functionality">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="a3d679dd-b7cf-4d4e-8361-76c07efd37c6" name="Changes" comment="Implemented search functionality">
+      <change afterPath="$PROJECT_DIR$/altDvdLibrary.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/controller/DvdLibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/controller/DvdLibraryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDaoFileImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDaoFileImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/ui/DvdLibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/ui/DvdLibraryView.java" afterDir="false" />
     </list>
@@ -82,7 +81,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661351271865</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Implemented search functionality">
+      <created>1661358662271</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1661358662271</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -101,6 +107,7 @@
     <MESSAGE value="Refactored existing code" />
     <MESSAGE value="Began implementing edit functionality" />
     <MESSAGE value="Implemented editing functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented editing functionality" />
+    <MESSAGE value="Implemented search functionality" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented search functionality" />
   </component>
 </project>

@@ -9,12 +9,13 @@ import java.util.*;
 public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
 
     private Map<String, Dvd> dvds = new HashMap<>();
-    public static final String LIBRARY_FILE = "fullDVDLibrary.txt";
+
+    private String libraryFile = "fullDVDLibrary.txt";
     public static final String DELIMITER = "::";
     @Override
     public Dvd addDvd(String title, Dvd dvd)
             throws DvdLibraryDaoException {
-        loadRoster();
+        loadRoster(libraryFile);
         Dvd newDvd = dvds.put(title, dvd);
         writeRoster();
         return newDvd;
@@ -23,21 +24,21 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
     @Override
     public List<Dvd> getAllDvds()
             throws DvdLibraryDaoException {
-        loadRoster();
+        loadRoster(libraryFile);
         return new ArrayList(dvds.values());
     }
 
     @Override
     public Dvd getDvd(String title)
             throws DvdLibraryDaoException {
-        loadRoster();
+        loadRoster(libraryFile);
         return dvds.get(title);
     }
 
     @Override
     public Dvd removeDvd(String title)
             throws DvdLibraryDaoException {
-        loadRoster();
+        loadRoster(libraryFile);
         Dvd removedDvd = dvds.remove(title);
         writeRoster();
         return removedDvd;
@@ -50,8 +51,6 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
             if(dvd.getTitle().contains(searchTerm)){
                 foundDvdList.add(dvd);
             }
-
-
         }
         return foundDvdList;
     }
@@ -83,27 +82,31 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
         // However, there are 3 remaining tokens that need to be set into the
         // new dvd object. Do this manually by using the appropriate setters.
 
-        // Index 1 - FirstName
-        dvdFromFile.setTitle(dvdTokens[1]);
 
-        // Index 2 - LastName
-        dvdFromFile.setReleaseDate(dvdTokens[2]);
+        dvdFromFile.setReleaseDate(dvdTokens[1]);
 
-        // Index 3 - Cohort
+
+        dvdFromFile.setMPAARating(dvdTokens[2]);
+
+
         dvdFromFile.setDirectorName(dvdTokens[3]);
+
+        dvdFromFile.setStudioName(dvdTokens[4]);
+
+        dvdFromFile.setNote(dvdTokens[5]);
 
         // We have now created a dvd! Return it!
         return dvdFromFile;
     }
 
-    private void loadRoster() throws DvdLibraryDaoException {
+    private void loadRoster(String libraryFile) throws DvdLibraryDaoException {
         Scanner scanner;
 
         try {
             // Create Scanner for reading the file
             scanner = new Scanner(
                     new BufferedReader(
-                            new FileReader(LIBRARY_FILE)));
+                            new FileReader(libraryFile)));
         } catch (FileNotFoundException e) {
             throw new DvdLibraryDaoException(
                     "-_- Could not load roster data into memory.", e);
@@ -137,7 +140,7 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
         // and concatenate with our DELIMITER as a kind of spacer.
 
         // Start with the dvd id, since that's supposed to be first.
-        String dvdAsText = aDvd.getMPAARating() + DELIMITER;
+        String dvdAsText = aDvd.getTitle() + DELIMITER;
 
         // add the rest of the properties in the correct order:
 
@@ -169,7 +172,7 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
         PrintWriter out;
 
         try {
-            out = new PrintWriter(new FileWriter(LIBRARY_FILE));
+            out = new PrintWriter(new FileWriter(libraryFile));
         } catch (IOException e) {
             throw new DvdLibraryDaoException(
                     "Could not save dvd data.", e);
