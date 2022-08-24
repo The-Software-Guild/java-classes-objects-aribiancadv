@@ -9,8 +9,8 @@ import java.util.List;
 
 
 public class DvdLibraryController {
-    private DvdLibraryView view;
-    private DvdLibraryDao dao;
+    private final DvdLibraryView view;
+    private final DvdLibraryDao dao;
 
 
     public DvdLibraryController(DvdLibraryDao dao, DvdLibraryView view) {
@@ -192,7 +192,10 @@ public class DvdLibraryController {
 
     private void loadLibraryFromFile() throws DvdLibraryDaoException {
         view.displayLoadLibraryBanner();
-        view.getLibraryFileChoice();
+        dao.setLibraryFile(view.getLibraryFileChoice());
+        dao.loadLibrary();
+
+
 
     }
 

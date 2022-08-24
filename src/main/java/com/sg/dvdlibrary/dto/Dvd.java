@@ -5,7 +5,7 @@ public class Dvd {
     private String title;
     private String releaseDate;
     private String MPAARating;
-    // Programming Language + directorName month/year
+
     private String directorName;
     private String studioName;
     private String note;
