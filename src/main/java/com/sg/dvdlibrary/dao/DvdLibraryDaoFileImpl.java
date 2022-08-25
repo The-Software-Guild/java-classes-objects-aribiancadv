@@ -66,19 +66,13 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
 
         String[] dvdTokens = dvdAsText.split(DELIMITER);
 
-
         String title = dvdTokens[0];
-
 
         Dvd dvdFromFile = new Dvd(title);
 
-
-
         dvdFromFile.setReleaseDate(dvdTokens[1]);
 
-
         dvdFromFile.setMPAARating(dvdTokens[2]);
-
 
         dvdFromFile.setDirectorName(dvdTokens[3]);
 
@@ -100,7 +94,7 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
                             new FileReader(libraryFile)));
         } catch (FileNotFoundException e) {
             throw new DvdLibraryDaoException(
-                    "-_- Could not load roster data into memory.", e);
+                    "-_- Could not load library data into memory.", e);
         }
 
         String currentLine;
@@ -123,11 +117,15 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
 
         String dvdAsText = aDvd.getTitle() + DELIMITER;
 
-        dvdAsText += aDvd.getTitle() + DELIMITER;
-
         dvdAsText += aDvd.getReleaseDate() + DELIMITER;
 
-        dvdAsText += aDvd.getDirectorName();
+        dvdAsText += aDvd.getMPAARating() + DELIMITER;
+
+        dvdAsText += aDvd.getDirectorName() + DELIMITER;
+
+        dvdAsText += aDvd.getStudioName() + DELIMITER;
+
+        dvdAsText += aDvd.getNote();
 
         return dvdAsText;
     }
