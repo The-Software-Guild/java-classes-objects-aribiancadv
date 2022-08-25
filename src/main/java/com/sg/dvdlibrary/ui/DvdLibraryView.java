@@ -34,8 +34,8 @@ public class DvdLibraryView {
         String studioName = getStudioChoice();
         String note = getNoteChoice();
         Dvd currentDvd = new Dvd(title);
-        currentDvd.setTitle(releaseDate);
-        currentDvd.setReleaseDate(MPAARating);
+        currentDvd.setReleaseDate(releaseDate);
+        currentDvd.setMPAARating(MPAARating);
         currentDvd.setDirectorName(directorName);
         currentDvd.setStudioName(studioName);
         currentDvd.setNote(note);
@@ -53,10 +53,10 @@ public class DvdLibraryView {
 
     public void displayDvdList(List<Dvd> dvdList) {
         for (Dvd currentDvd : dvdList) {
-            String dvdInfo = String.format("#%s : %s %s",
-                    currentDvd.getMPAARating(),
+            String dvdInfo = String.format("%s (%s) Dir. %s",
                     currentDvd.getTitle(),
-                    currentDvd.getReleaseDate());
+                    currentDvd.getReleaseDate(),
+                    currentDvd.getDirectorName());
             io.print(dvdInfo);
         }
         io.readString("Please hit enter to continue.");

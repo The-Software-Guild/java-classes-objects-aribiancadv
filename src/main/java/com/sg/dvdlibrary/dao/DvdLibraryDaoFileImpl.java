@@ -15,7 +15,7 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
     public static final String DELIMITER = "::";
     @Override
     public Dvd addDvd(String title, Dvd dvd)
-            throws DvdLibraryDaoException {
+            throws DvdLibraryDaoException, IOException {
         loadRoster();
         Dvd newDvd = dvds.put(title, dvd);
         writeRoster();
@@ -24,26 +24,26 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
 
     @Override
     public List<Dvd> getAllDvds()
-            throws DvdLibraryDaoException {
+            throws DvdLibraryDaoException, IOException {
         loadRoster();
         return new ArrayList<>(dvds.values());
     }
 
     @Override
-    public void loadLibrary() throws DvdLibraryDaoException{
+    public void loadLibrary() throws DvdLibraryDaoException, IOException {
         loadRoster();
     }
 
     @Override
     public Dvd getDvd(String title)
-            throws DvdLibraryDaoException {
+            throws DvdLibraryDaoException, IOException {
         loadRoster();
         return dvds.get(title);
     }
 
     @Override
     public Dvd removeDvd(String title)
-            throws DvdLibraryDaoException {
+            throws DvdLibraryDaoException, IOException {
         loadRoster();
         Dvd removedDvd = dvds.remove(title);
         writeRoster();
@@ -84,8 +84,9 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
         return dvdFromFile;
     }
 
-    private void loadRoster() throws DvdLibraryDaoException {
+    private void loadRoster() throws DvdLibraryDaoException, IOException {
         Scanner scanner;
+
 
         try {
 
@@ -105,10 +106,10 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
 
             currentLine = scanner.nextLine();
 
-            currentDvd = unmarshallDvd(currentLine);
-
-
-            dvds.put(currentDvd.getTitle(), currentDvd);
+            if(currentLine.length() != 0){
+               currentDvd = unmarshallDvd(currentLine);
+               dvds.put(currentDvd.getTitle(), currentDvd);
+            }
         }
 
         scanner.close();
@@ -131,7 +132,7 @@ public class DvdLibraryDaoFileImpl implements DvdLibraryDao{
     }
 
 
-    private void writeRoster() throws DvdLibraryDaoException {
+    private void writeRoster() throws DvdLibraryDaoException, IOException {
 
         PrintWriter out;
 

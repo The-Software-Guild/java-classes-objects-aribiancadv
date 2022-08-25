@@ -30,8 +30,8 @@ public class Dvd {
         return note;
     }
 
-    public Dvd(String MPAARating) {
-        this.MPAARating = MPAARating;
+    public Dvd(String title) {
+        this.title = title;
     }
 
     public String getTitle() {

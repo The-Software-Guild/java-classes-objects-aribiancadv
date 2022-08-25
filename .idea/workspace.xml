@@ -4,11 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a3d679dd-b7cf-4d4e-8361-76c07efd37c6" name="Changes" comment="Finished implementing loading, tidied up code">
+    <list default="true" id="a3d679dd-b7cf-4d4e-8361-76c07efd37c6" name="Changes" comment="Debugging marshalling process">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/altDvdLibrary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/altDvdLibrary.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/fullDVDLibrary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/fullDVDLibrary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/controller/DvdLibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/controller/DvdLibraryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDaoFileImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDaoFileImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dto/Dvd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dto/Dvd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/ui/DvdLibraryView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/ui/DvdLibraryView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +106,14 @@
       <option name="project" value="LOCAL" />
       <updated>1661383077387</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Debugging marshalling process">
+      <created>1661417133724</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1661417133724</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -125,19 +135,21 @@
     <MESSAGE value="Implemented search functionality" />
     <MESSAGE value="Implemented file loading" />
     <MESSAGE value="Finished implementing loading, tidied up code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished implementing loading, tidied up code" />
+    <MESSAGE value="Debugging marshalling process" />
+    <option name="LAST_COMMIT_MESSAGE" value="Debugging marshalling process" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDaoFileImpl.java</url>
-          <line>16</line>
-          <properties class="com.sg.dvdlibrary.dao.DvdLibraryDaoFileImpl" method="addDvd">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="2" />
+          <line>68</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/sg/dvdlibrary/dao/DvdLibraryDaoFileImpl.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
